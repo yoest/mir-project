@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1203</width>
+    <width>1276</width>
     <height>544</height>
    </rect>
   </property>
@@ -17,8 +17,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>10</y>
+      <x>190</x>
+      <y>20</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -27,7 +27,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -44,8 +43,8 @@
    <widget class="QCheckBox" name="checkBox_HistC">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>50</y>
+      <x>180</x>
+      <y>60</y>
       <width>81</width>
       <height>17</height>
      </rect>
@@ -54,7 +53,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -65,8 +63,8 @@
    <widget class="QCheckBox" name="checkBox_HSV">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>50</y>
+      <x>260</x>
+      <y>60</y>
       <width>81</width>
       <height>17</height>
      </rect>
@@ -75,7 +73,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -86,8 +83,8 @@
    <widget class="QCheckBox" name="checkBox_SIFT">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>80</y>
+      <x>180</x>
+      <y>90</y>
       <width>81</width>
       <height>17</height>
      </rect>
@@ -96,7 +93,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -107,8 +103,8 @@
    <widget class="QCheckBox" name="checkBox_ORB">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>80</y>
+      <x>260</x>
+      <y>90</y>
       <width>91</width>
       <height>16</height>
      </rect>
@@ -117,7 +113,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -128,8 +123,8 @@
    <widget class="QCheckBox" name="checkBox_GLCM">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>110</y>
+      <x>260</x>
+      <y>120</y>
       <width>81</width>
       <height>17</height>
      </rect>
@@ -138,7 +133,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -149,8 +143,8 @@
    <widget class="QCheckBox" name="checkBox_LBP">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>110</y>
+      <x>180</x>
+      <y>120</y>
       <width>81</width>
       <height>17</height>
      </rect>
@@ -159,7 +153,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -170,8 +163,8 @@
    <widget class="QCheckBox" name="checkBox_HOG">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>50</y>
+      <x>360</x>
+      <y>60</y>
       <width>71</width>
       <height>17</height>
      </rect>
@@ -180,7 +173,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -191,8 +183,8 @@
    <widget class="QCheckBox" name="checkBox_Moments">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>80</y>
+      <x>360</x>
+      <y>90</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -201,7 +193,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -212,9 +203,9 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>140</y>
-      <width>361</width>
+      <x>20</x>
+      <y>150</y>
+      <width>421</width>
       <height>31</height>
      </rect>
     </property>
@@ -222,7 +213,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -239,9 +229,9 @@
    <widget class="QLabel" name="label_requete">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>180</y>
-      <width>361</width>
+      <x>20</x>
+      <y>190</y>
+      <width>421</width>
       <height>251</height>
      </rect>
     </property>
@@ -249,7 +239,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -269,8 +258,8 @@
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>440</y>
+      <x>80</x>
+      <y>450</y>
       <width>931</width>
       <height>41</height>
      </rect>
@@ -282,8 +271,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>10</y>
+      <x>450</x>
+      <y>20</y>
       <width>551</width>
       <height>31</height>
      </rect>
@@ -292,7 +281,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -309,8 +297,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>940</x>
-      <y>10</y>
+      <x>1010</x>
+      <y>20</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -319,7 +307,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -336,8 +323,8 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>180</y>
+      <x>450</x>
+      <y>190</y>
       <width>551</width>
       <height>251</height>
      </rect>
@@ -351,8 +338,8 @@
    <widget class="QLabel" name="label_courbe">
     <property name="geometry">
      <rect>
-      <x>940</x>
-      <y>180</y>
+      <x>1010</x>
+      <y>190</y>
       <width>251</width>
       <height>251</height>
      </rect>
@@ -361,7 +348,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -381,8 +367,8 @@
    <widget class="QPushButton" name="Quitter">
     <property name="geometry">
      <rect>
-      <x>940</x>
-      <y>440</y>
+      <x>1010</x>
+      <y>450</y>
       <width>251</width>
       <height>41</height>
      </rect>
@@ -391,7 +377,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -402,8 +387,8 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>70</y>
+      <x>760</x>
+      <y>80</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -412,8 +397,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>70</y>
+      <x>660</x>
+      <y>80</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -422,7 +407,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -439,8 +423,8 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>140</y>
+      <x>450</x>
+      <y>150</y>
       <width>551</width>
       <height>31</height>
      </rect>
@@ -449,7 +433,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -466,8 +449,8 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>940</x>
-      <y>140</y>
+      <x>1010</x>
+      <y>150</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -476,7 +459,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -493,8 +475,8 @@
    <widget class="QPushButton" name="chercher">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>70</y>
+      <x>900</x>
+      <y>80</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -503,7 +485,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -514,8 +495,8 @@
    <widget class="QPushButton" name="calcul_RP">
     <property name="geometry">
      <rect>
-      <x>940</x>
-      <y>70</y>
+      <x>1010</x>
+      <y>80</y>
       <width>251</width>
       <height>41</height>
      </rect>
@@ -524,7 +505,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -535,8 +515,8 @@
    <widget class="QCheckBox" name="checkBox_autre">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>110</y>
+      <x>360</x>
+      <y>120</y>
       <width>81</width>
       <height>17</height>
      </rect>
@@ -545,7 +525,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -556,9 +535,9 @@
    <widget class="QPushButton" name="charger">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>91</width>
+      <x>100</x>
+      <y>70</y>
+      <width>71</width>
       <height>61</height>
      </rect>
     </property>
@@ -566,7 +545,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -577,9 +555,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>101</width>
+      <x>100</x>
+      <y>20</y>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -587,7 +565,6 @@
      <font>
       <family>Calibri</family>
       <pointsize>12</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -604,8 +581,8 @@
    <widget class="QPushButton" name="charger_desc">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>70</y>
+      <x>450</x>
+      <y>80</y>
       <width>201</width>
       <height>41</height>
      </rect>
@@ -614,12 +591,31 @@
      <font>
       <family>Calibri</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
      <string>Charger descripteurs</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="charger_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>71</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>11</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Retour</string>
     </property>
    </widget>
   </widget>
@@ -628,8 +624,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1203</width>
-     <height>31</height>
+     <width>1276</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>
