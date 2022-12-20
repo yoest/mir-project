@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1200</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,30 +14,43 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="indexing_btn">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>160</y>
-      <width>281</width>
-      <height>61</height>
+      <x>450</x>
+      <y>150</y>
+      <width>300</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="text">
      <string>Indexation</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="search_btn">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>290</y>
-      <width>281</width>
-      <height>61</height>
+      <x>450</x>
+      <y>250</y>
+      <width>300</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="text">
      <string>Recherche</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="quit_btn">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>350</y>
+      <width>300</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Quitter</string>
     </property>
    </widget>
   </widget>
@@ -46,8 +59,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>24</height>
+     <width>1200</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
