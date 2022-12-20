@@ -56,8 +56,11 @@ class Ui_MainWindow(object):
         MainWindow.show()
 
     def go_to_recherche(self):
+        print("recherche")
+        oldWindow = MainWindow
         ui = RechercheWindow()
         ui.setupUi(MainWindow)
+        oldWindow.hide()
         MainWindow.show()
 
 
