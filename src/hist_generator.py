@@ -24,8 +24,8 @@ def show_no_selected_dialog():
 
 def generate_color_hist(filenames, progress_bar):
     """ Generate color histogram for each image in the folder """
-    if not os.path.isdir("BGR"):
-        os.mkdir("BGR")
+    if not os.path.isdir("../output/BGR"):
+        os.mkdir("../output/BGR")
 
     for i, path in enumerate(os.listdir(filenames)):
         img = cv2.imread(filenames + "/" + path)
@@ -35,7 +35,7 @@ def generate_color_hist(filenames, progress_bar):
         feature = np.concatenate((hist_b, np.concatenate((hist_g, hist_r), axis=None)), axis=None)
 
         num_image, _ = path.split(".")
-        np.savetxt("BGR/" + str(num_image) + ".txt", feature)
+        np.savetxt("../output/BGR/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
     print("Indexing hist color done")
@@ -43,8 +43,8 @@ def generate_color_hist(filenames, progress_bar):
 
 def generate_hsv_hist(filenames, progress_bar):
     """ Generate hsv histogram for each image in the folder """
-    if not os.path.isdir("HSV"):
-        os.mkdir("HSV")
+    if not os.path.isdir("../output/HSV"):
+        os.mkdir("../output/HSV")
 
     for i, path in enumerate(os.listdir(filenames)):
         img = cv2.imread(filenames + "/" + path)
@@ -56,7 +56,7 @@ def generate_hsv_hist(filenames, progress_bar):
         feature = np.concatenate((hist_v, np.concatenate((hist_s, hist_h), axis=None)), axis=None)
 
         num_image, _ = path.split(".")
-        np.savetxt("HSV/" + str(num_image) + ".txt", feature)
+        np.savetxt("../output/HSV/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
     
     print("Indexing hist hsv done")
@@ -64,8 +64,8 @@ def generate_hsv_hist(filenames, progress_bar):
         
 def generate_sift(filenames, progress_bar):
     """ Generate sift for each image in the folder """
-    if not os.path.isdir("SIFT"):
-        os.mkdir("SIFT")
+    if not os.path.isdir("../output/SIFT"):
+        os.mkdir("../output/SIFT")
 
     for i, path in enumerate(os.listdir(filenames)):
         img = cv2.imread(filenames + "/" + path)
@@ -74,7 +74,7 @@ def generate_sift(filenames, progress_bar):
         kps , des = sift.detectAndCompute(img,None)
 
         num_image, _ = path.split(".")
-        np.savetxt("SIFT/" + str(num_image) + ".txt" ,des)
+        np.savetxt("../output/SIFT/" + str(num_image) + ".txt" ,des)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
         
         featureSum += len(kps)
@@ -84,8 +84,8 @@ def generate_sift(filenames, progress_bar):
 
 def generate_orb(filenames, progress_bar):
     """ Generate orb for each image in the folder """
-    if not os.path.isdir("ORB"):
-        os.mkdir("ORB")
+    if not os.path.isdir("../output/ORB"):
+        os.mkdir("../output/ORB")
 
     for i, path in enumerate(os.listdir(filenames)):
         img = cv2.imread(filenames + "/" + path)
@@ -93,7 +93,7 @@ def generate_orb(filenames, progress_bar):
         _, descriptor1 = orb.detectAndCompute(img, None)
         
         num_image, _ = path.split(".")
-        np.savetxt("ORB/" + str(num_image) + ".txt", descriptor1)
+        np.savetxt("../output/ORB/" + str(num_image) + ".txt", descriptor1)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
     print("Indexing orb done")
@@ -101,8 +101,8 @@ def generate_orb(filenames, progress_bar):
 
 def generate_glcm(filenames, progress_bar):
     """ Generate glcm for each image in the folder """
-    if not os.path.isdir("GLCM"):
-        os.mkdir("GLCM")
+    if not os.path.isdir("../output/GLCM"):
+        os.mkdir("../output/GLCM")
 
     distances = [1,-1]
     angles = [0, np.pi / 4, np.pi / 2, 3 * np.pi / 4]
@@ -120,7 +120,7 @@ def generate_glcm(filenames, progress_bar):
         glcm_prop_6 = graycoprops(glcm_matrix, 'ASM').ravel()
         feature = np.array([glcm_prop_1, glcm_prop_2, glcm_prop_3, glcm_prop_4, glcm_prop_5, glcm_prop_6]).ravel()
         num_image, _ = path.split(".")
-        np.savetxt("GLCM/" + str(num_image) + ".txt", feature)
+        np.savetxt("../output/GLCM/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
     print("Indexing glcm done")
@@ -128,8 +128,8 @@ def generate_glcm(filenames, progress_bar):
 
 def generate_lbp(filenames, progress_bar):
     """ Generate lbp for each image in the folder """
-    if not os.path.isdir("LBP"):
-        os.mkdir("LBP")
+    if not os.path.isdir("../output/LBP"):
+        os.mkdir("../output/LBP")
 
     for i, path in enumerate(os.listdir(filenames)):
         img = cv2.imread(filenames + "/" + path)
@@ -147,7 +147,7 @@ def generate_lbp(filenames, progress_bar):
                 sub_hist, _ = np.histogram(sub_vector, bins=int(2**points), range=(0, 2**points))
                 histograms = np.concatenate((histograms, sub_hist), axis=None)
         num_image, _ = path.split(".")
-        np.savetxt("LBP/" + str(num_image) + ".txt", histograms)
+        np.savetxt("../output/LBP/" + str(num_image) + ".txt", histograms)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
     print("Indexing lbp done")
@@ -155,8 +155,8 @@ def generate_lbp(filenames, progress_bar):
 
 def generate_hog(filenames, progress_bar):
     """ Generate hog for each image in the folder """
-    if not os.path.isdir("HOG"):
-        os.mkdir("HOG")
+    if not os.path.isdir("../output/HOG"):
+        os.mkdir("../output/HOG")
 
     cell_size = (25, 25)
     block_size = (50, 50)
@@ -170,7 +170,48 @@ def generate_hog(filenames, progress_bar):
         hog = cv2.HOGDescriptor(win_size, block_size, block_stride, cell_size, n_bins)
         feature = hog.compute(image)
         num_image, _ = path.split(".")
-        np.savetxt("HOG/" + str(num_image) + ".txt", feature)
+        np.savetxt("../output/HOG/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
     print("Indexing hog done")
+
+""" J'ai essayé un truc mais pas sur que ce soit la bonne approche, je comprends pas trop comment on peut combiner
+def global_generator(filenames, progress_bar, feature_methods):
+    if not os.path.isdir("FEATURES"):
+        os.mkdir("FEATURES")
+        
+    # Create a dictionary mapping descriptor names to feature extraction functions
+    descriptor_functions = {
+        "SIFT": cv2.SIFT_create,
+        "ORB": cv2.ORB_create,
+        # Ajouter les autres
+    }
+    
+    for i, path in enumerate(os.listdir(filenames)):
+        img = cv2.imread(filenames + "/" + path)
+        num_image, _ = path.split(".")
+        
+        # Initialize an empty list to store all the features for this image
+        features = []
+        
+        for descriptor in feature_methods:
+            # Extract features using the appropriate function from the dictionary
+            descriptor_function = descriptor_functions[descriptor]
+            feature_extractor = descriptor_function()
+            _, descriptor1 = feature_extractor.detectAndCompute(img, None)
+            
+            # Make sure all feature arrays have the same number of dimensions
+            if len(descriptor1.shape) == 1:
+                descriptor1 = descriptor1.reshape(-1, 1)
+            
+            # Add the features to the list
+            features.extend(descriptor1)
+        
+        # Convert the list of features to a numpy array and save it to a file
+        features = np.array(features)
+        np.savetxt("FEATURES/" + str(num_image) + ".txt", features)
+        
+        progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
+    
+    print("Indexing features done")
+"""

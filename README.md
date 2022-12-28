@@ -1,6 +1,7 @@
 # Project: Multimedia information retrieval
 
-- [ ] Réaliser la partie d'indexation et de création des descripteurs + laisser la possibilité de combiner les descripteurs. Lier le tout avec les boutons.
+- [x] Réaliser la partie d'indexation et de création des descripteurs 
+- [ ] Laisser la possibilité de combiner les descripteurs. Lier le tout avec les boutons.
 - [ ] Obtenir les temps d'éxecution pour l'indexation (facultatif: la taille des descripteurs).
 - [ ] Réaliser la partie recherche avec le choix de la fonction de calcul de similarité. Lier le tout avec les boutons.
 - [ ] Obtenir les temps de recherche moyen par image.
