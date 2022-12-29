@@ -89,10 +89,10 @@ def get_k_voisins(lfeatures, req, k, distance_name):
         dist = compute_distance_with_name(req, lfeatures[i][1], distance_name)
         ldistances.append((lfeatures[i][0], lfeatures[i][1], dist)) 
 
-    ordre = distance_name in ["Correlation","Intersection"]
+    ordre = distance_name in ["Correlation", "Intersection"]
     ldistances.sort(key=operator.itemgetter(2), reverse=ordre) 
 
-    lvoisins = [] 
+    lneighboor = [] 
     for i in range(k): 
-        lvoisins.append(ldistances[i]) 
-    return lvoisins
+        lneighboor.append(ldistances[i]) 
+    return lneighboor

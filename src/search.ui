@@ -41,7 +41,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_HistC">
+   <widget class="QCheckBox" name="checkbox_hist_color">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -62,7 +62,7 @@
      <string>BGR</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_HSV">
+   <widget class="QCheckBox" name="checkbox_hsv">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -83,7 +83,7 @@
      <string>HSV</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_SIFT">
+   <widget class="QCheckBox" name="checkbox_sift">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -104,7 +104,7 @@
      <string>SIFT</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_ORB">
+   <widget class="QCheckBox" name="checkbox_orb">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -125,7 +125,7 @@
      <string>ORB</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_GLCM">
+   <widget class="QCheckBox" name="checkbox_glcm">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -146,7 +146,7 @@
      <string>GLCM</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_LBP">
+   <widget class="QCheckBox" name="checkbox_lbp">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -167,7 +167,7 @@
      <string>LBP</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_HOG">
+   <widget class="QCheckBox" name="checkbox_hog">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -188,7 +188,7 @@
      <string>HOG</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_Moments">
+   <widget class="QCheckBox" name="checkbox_moments">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -266,7 +266,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar">
+   <widget class="QProgressBar" name="progress_bar">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -469,7 +469,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="chercher">
+   <widget class="QPushButton" name="search_btn">
     <property name="geometry">
      <rect>
       <x>840</x>
@@ -490,7 +490,7 @@
      <string>Recherche</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="calcul_RP">
+   <widget class="QPushButton" name="calcul_rp_curve_btn">
     <property name="geometry">
      <rect>
       <x>960</x>
@@ -511,7 +511,7 @@
      <string>Calculer la courbe R/P</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_autre">
+   <widget class="QCheckBox" name="checkbox_other">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -553,7 +553,7 @@
      <string>Charger</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="charger_desc">
+   <widget class="QPushButton" name="load_desc_btn">
     <property name="geometry">
      <rect>
       <x>390</x>

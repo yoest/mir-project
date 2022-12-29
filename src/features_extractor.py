@@ -102,8 +102,11 @@ def extract_req_features(filename, algo_choice):
             vect_features = compute_lbp(filename)
 
         # -- HOG --
-        elif algo_choice==7:
+        elif algo_choice == 7:
             vect_features = compute_hog(filename)
+
+        else:
+            raise ValueError("Invalid algorithm choice: " + str(algo_choice))
 			
         np.savetxt("method_" + str(algo_choice) + "_request.txt", vect_features)
         print("saved")

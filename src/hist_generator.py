@@ -1,4 +1,3 @@
-#Defintion de toute les fonctions à appeller dans l'interface
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
 import os
 import cv2
@@ -10,16 +9,6 @@ from skimage import io, color, img_as_ubyte
 from matplotlib import pyplot as plt
 from skimage.feature import hog, greycomatrix, graycoprops, local_binary_pattern, greycoprops
 
-
-
-def show_no_selected_dialog():
-    """ Show a dialog box when no descriptor is selected """
-    msgBox = QMessageBox()
-    msgBox.setIcon(QMessageBox.Information)
-    msgBox.setText("Merci de sélectionner un descripteur via le menu ci-dessus")
-    msgBox.setWindowTitle("Pas de Descripteur sélectionné")
-    msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-    return msgBox.exec()
 
 
 def generate_color_hist(filenames, progress_bar):
