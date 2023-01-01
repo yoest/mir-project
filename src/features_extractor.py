@@ -108,7 +108,7 @@ def extract_req_features(filename, algo_choice):
         else:
             raise ValueError("Invalid algorithm choice: " + str(algo_choice))
 			
-        np.savetxt("method_" + str(algo_choice) + "_request.txt", vect_features)
+        np.savetxt("../search_output/method_" + str(algo_choice) + "_request.txt", vect_features)
         print("saved")
 
         return vect_features

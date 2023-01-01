@@ -27,6 +27,7 @@ def generate_color_hist(filenames, progress_bar):
         np.savetxt("../output/BGR/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
+    progress_bar.setValue(0)
     print("Indexing hist color done")
 
 
@@ -48,6 +49,7 @@ def generate_hsv_hist(filenames, progress_bar):
         np.savetxt("../output/HSV/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
     
+    progress_bar.setValue(0)
     print("Indexing hist hsv done")
 
         
@@ -68,6 +70,7 @@ def generate_sift(filenames, progress_bar):
         
         featureSum += len(kps)
     
+    progress_bar.setValue(0)
     print("Indexing sift done")
   
 
@@ -85,6 +88,7 @@ def generate_orb(filenames, progress_bar):
         np.savetxt("../output/ORB/" + str(num_image) + ".txt", descriptor1)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
+    progress_bar.setValue(0)
     print("Indexing orb done")
 
 
@@ -112,6 +116,7 @@ def generate_glcm(filenames, progress_bar):
         np.savetxt("../output/GLCM/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
+    progress_bar.setValue(0)
     print("Indexing glcm done")
 
 
@@ -139,6 +144,7 @@ def generate_lbp(filenames, progress_bar):
         np.savetxt("../output/LBP/" + str(num_image) + ".txt", histograms)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
+    progress_bar.setValue(0)
     print("Indexing lbp done")
 
 
@@ -162,6 +168,7 @@ def generate_hog(filenames, progress_bar):
         np.savetxt("../output/HOG/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
 
+    progress_bar.setValue(0)
     print("Indexing hog done")
 
 """ J'ai essayé un truc mais pas sur que ce soit la bonne approche, je comprends pas trop comment on peut combiner

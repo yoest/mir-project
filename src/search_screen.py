@@ -97,7 +97,6 @@ class SearchScreen(QtWidgets.QMainWindow):
                 continue
 
             feature = np.loadtxt(data)
-            print(os.path.join("../db", os.path.basename(data).split('.')[0] + '.jpg'))
             self.features.append((os.path.join("../db", os.path.basename(data).split('.')[0] + '.jpg'), feature))
 
             self.progress_bar.setValue(int(100 * ((i + 1) / len(all_files))))
@@ -160,13 +159,14 @@ class SearchScreen(QtWidgets.QMainWindow):
         """ Compute the recall and precision based on the nearest images """
         recall_precision, recalls, precisions = [], [], []
         filename_req = os.path.basename(self.filename)
-        num_image, _ = filename_req.split(".")
+        filename_without_extension, _ = filename_req.split(".")
+        num_image = filename_without_extension.split("_")[-1]
         class_image_query = int(num_image) / 100
         val = 0
 
         # Add all the pertinent images in the list
         for j in range(self.number_neighboor):
-            class_near_image = (int(self.nom_image_plus_proches[j].split('.')[0]))/100
+            class_near_image = (int(self.name_nearer_image[j].split('.')[0].split("_")[-1]))/100
             class_image_query = int(class_image_query)
             class_near_image = int(class_near_image)
 
@@ -185,7 +185,7 @@ class SearchScreen(QtWidgets.QMainWindow):
                 j -= 1
 
             precision = val / (i + 1)
-            recall = val / self.sortie
+            recall = val / self.number_neighboor
 
             recalls.append(recall)
             precisions.append(precision)
@@ -197,7 +197,7 @@ class SearchScreen(QtWidgets.QMainWindow):
         plt.title("R/P" + str(self.number_neighboor) + " voisins de l'image n°" + num_image)
 
         # Save the recall precision curve
-        save_folder = os.path.join(".", num_image)
+        save_folder = os.path.join("../search_output", num_image)
         if not os.path.exists(save_folder):
             os.makedirs(save_folder)
         save_name = os.path.join(save_folder, num_image + '.png')
