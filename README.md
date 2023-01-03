@@ -4,7 +4,7 @@
 - [ ] Laisser la possibilité de combiner les descripteurs. Lier le tout avec les boutons.
 - [ ] Obtenir les temps d'éxecution pour l'indexation (facultatif: la taille des descripteurs).
 - [x] Réaliser la partie recherche avec le choix de la fonction de calcul de similarité. Lier le tout avec les boutons.
-- [ ] Obtenir les temps de recherche moyen par image.
+- [x] Obtenir les temps de recherche moyen par image.
 - [ ] Pouvoir obtenir: Rappel (R), Précision (P), Average Precision (AP), Mean Average Precision (MaP) et R-Precision ainsi que d'afficher la courbe rappel-précision.
 - [ ] Pouvoir afficher le Top-K des images pertinentes pour une image requête (K est un paramètre choisi par l'utilisateur) selon les quatres statistiques citées ci-dessus.
 

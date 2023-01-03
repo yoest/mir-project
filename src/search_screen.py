@@ -1,3 +1,4 @@
+import time
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 
@@ -24,6 +25,8 @@ class SearchScreen(QtWidgets.QMainWindow):
     def __init__(self, widgets_stack):
         super(SearchScreen, self).__init__()
         self.widgets_stack = widgets_stack
+
+        self.search_times = []
 
         loadUi("search.ui", self)
         self.menu_btn.clicked.connect(self.go_to_menu_screen)
@@ -115,6 +118,8 @@ class SearchScreen(QtWidgets.QMainWindow):
 
     def search(self, MainWindow):
         """ Search the nearest images related to the query image """
+        start_time = time.time()
+
         # Reset the grid layout
         for i in reversed(range(self.gridLayout.count())):
             self.gridLayout.itemAt(i).widget().setParent(None)
@@ -156,6 +161,15 @@ class SearchScreen(QtWidgets.QMainWindow):
                 self.gridLayout.addWidget(label, i, j)
                 k += 1
 
+        # Compute the mean search time by image
+        end_time = time.time()
+        time_taken = end_time - start_time
+        self.search_times.append(time_taken)
+
+        print('Time taken:', time_taken, 'seconds')
+        print('Mean search time:', np.mean(self.search_times), 'seconds (for', len(self.search_times), 'images)\n')
+
+
     def compute_metrics(self):
         """ Compute the recall and precision based on the nearest images """
         recall_precision, self.recalls, self.precisions = [], [], []
@@ -190,6 +204,7 @@ class SearchScreen(QtWidgets.QMainWindow):
 
             self.recalls.append(recall)
             self.precisions.append(precision)
+
 
     def show_metrics(self):
         """ Show a dialog box when no descriptor is selected """
