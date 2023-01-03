@@ -30,7 +30,8 @@ class SearchScreen(QtWidgets.QMainWindow):
         self.load_btn.clicked.connect(self.load_db)
         self.load_desc_btn.clicked.connect(self.load_features)
         self.search_btn.clicked.connect(self.search)
-        self.calcul_rp_curve_btn.clicked.connect(self.compute_recall_precision)
+        self.calcul_rp_curve_btn.clicked.connect(self.plot_recall_precision)
+        self.calcul_metric_btn.clicked.connect(self.show_metrics)
 
     def go_to_menu_screen(self):
         self.widgets_stack.setCurrentIndex(self.widgets_stack.currentIndex() - 1)
@@ -155,13 +156,13 @@ class SearchScreen(QtWidgets.QMainWindow):
                 self.gridLayout.addWidget(label, i, j)
                 k += 1
 
-    def compute_recall_precision(self):
+    def compute_metrics(self):
         """ Compute the recall and precision based on the nearest images """
-        recall_precision, recalls, precisions = [], [], []
+        recall_precision, self.recalls, self.precisions = [], [], []
         filename_req = os.path.basename(self.filename)
         filename_without_extension, _ = filename_req.split(".")
-        num_image = filename_without_extension.split("_")[-1]
-        class_image_query = int(num_image) / 100
+        self.num_image = filename_without_extension.split("_")[-1]
+        class_image_query = int(self.num_image) / 100
         val = 0
 
         # Add all the pertinent images in the list
@@ -187,20 +188,37 @@ class SearchScreen(QtWidgets.QMainWindow):
             precision = val / (i + 1)
             recall = val / self.number_neighboor
 
-            recalls.append(recall)
-            precisions.append(precision)
+            self.recalls.append(recall)
+            self.precisions.append(precision)
+
+    def show_metrics(self):
+        """ Show a dialog box when no descriptor is selected """
+        if not hasattr(self, 'recalls'):
+            self.compute_metrics()
+
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("Rappel: " + str(self.recalls[-1]) + "\nPrécision: " + str(self.precisions[-1])) 
+        msgBox.setWindowTitle("Métriques")
+        msgBox.setStandardButtons(QMessageBox.Ok)
+        return msgBox.exec()
+
+    def plot_recall_precision(self):
+        """ Plot the recall precision curve """
+        if not hasattr(self, 'recalls'):
+            self.compute_metrics()
 
         # Create and plot the recall precision curve
-        plt.plot(recalls, precisions)
+        plt.plot(self.recalls, self.precisions)
         plt.xlabel("Recall")
         plt.ylabel("Precision")
-        plt.title("R/P" + str(self.number_neighboor) + " voisins de l'image n°" + num_image)
+        plt.title("R/P" + str(self.number_neighboor) + " voisins de l'image n°" + self.num_image)
 
         # Save the recall precision curve
-        save_folder = os.path.join("../search_output", num_image)
+        save_folder = os.path.join("../search_output", self.num_image)
         if not os.path.exists(save_folder):
             os.makedirs(save_folder)
-        save_name = os.path.join(save_folder, num_image + '.png')
+        save_name = os.path.join(save_folder, self.num_image + '.png')
         plt.savefig(save_name, format='png', dpi=600)
         plt.close()
 

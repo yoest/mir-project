@@ -327,7 +327,7 @@
      <enum>QFrame::Panel</enum>
     </property>
     <property name="text">
-     <string>Rappel/Précision</string>
+     <string>Métriques</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -494,7 +494,7 @@
     <property name="geometry">
      <rect>
       <x>960</x>
-      <y>80</y>
+      <y>100</y>
       <width>221</width>
       <height>41</height>
      </rect>
@@ -595,6 +595,27 @@
      <string>Menu</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="calcul_metric_btn">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>60</y>
+      <width>221</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Calculer les métriques</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -602,7 +623,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
