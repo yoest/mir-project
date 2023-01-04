@@ -35,7 +35,6 @@ class SearchScreen(QtWidgets.QMainWindow):
 
         # Load the UI file and link the buttons to their functions
         loadUi("search.ui", self)
-        self.combo_box_k.addItems(['10', '20', '50', '100', '200'])
 
         self.menu_btn.clicked.connect(self.go_to_menu_screen)
         self.load_btn.clicked.connect(self.load_image_query)
@@ -56,6 +55,27 @@ class SearchScreen(QtWidgets.QMainWindow):
         self.label_requete.height(), QtCore.Qt.KeepAspectRatio)
         self.label_requete.setPixmap(pixmap)
         self.label_requete.setAlignment(QtCore.Qt.AlignCenter)
+
+        # Compute the maximum number of images that can be displayed in the scroll area (to have the top max) to add it in the combo box
+        self.combo_box_k.clear()
+
+        filename_req = os.path.basename(self.filename)
+        filename_without_extension, _ = filename_req.split(".")
+
+        # NB: The class is the first digit (which is the category) that we sum with the second digit (which is the sub-category)
+        class_image_query = int(filename_without_extension[0]) * 10 + int(filename_without_extension[2])
+
+        nb_images_same_class = 0
+        for file in os.listdir("../db"):
+            class_image = int(file[0]) * 10 + int(file[2])
+            if class_image == class_image_query:
+                nb_images_same_class += 1
+
+        k_value_to_add = [10, 20, 50, 100, 200]
+        for k in k_value_to_add:
+            if k <= nb_images_same_class:
+                self.combo_box_k.addItem(str(k))
+        self.combo_box_k.addItem(str(nb_images_same_class))
 
     def load_features(self):
         """ Load the features of the descriptors """
@@ -160,6 +180,9 @@ class SearchScreen(QtWidgets.QMainWindow):
         k = 0
         for i in range(math.ceil(self.number_neighboor / number_columns)):
             for j in range(number_columns):
+                if k >= len(self.path_nearer_image):
+                    break
+
                 img = cv2.imread(self.path_nearer_image[k], 1)
 
                 # Swith the image to rgb
