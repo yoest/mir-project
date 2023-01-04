@@ -333,21 +333,6 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>190</y>
-      <width>491</width>
-      <height>321</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-    </layout>
-   </widget>
    <widget class="QLabel" name="label_courbe">
     <property name="geometry">
      <rect>
@@ -378,11 +363,11 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="combo_box_distance">
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>80</y>
+      <y>58</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -392,7 +377,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>80</y>
+      <y>58</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -616,6 +601,95 @@
      <string>Calculer les métriques</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>102</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string>K :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="combo_box_k">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>102</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="scroll_area">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>190</y>
+      <width>491</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>489</width>
+       <height>319</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>checkbox_hist_color</zorder>
+   <zorder>checkbox_hsv</zorder>
+   <zorder>checkbox_sift</zorder>
+   <zorder>checkbox_orb</zorder>
+   <zorder>checkbox_glcm</zorder>
+   <zorder>checkbox_lbp</zorder>
+   <zorder>checkbox_hog</zorder>
+   <zorder>checkbox_moments</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_requete</zorder>
+   <zorder>progress_bar</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_courbe</zorder>
+   <zorder>combo_box_distance</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_9</zorder>
+   <zorder>search_btn</zorder>
+   <zorder>calcul_rp_curve_btn</zorder>
+   <zorder>checkbox_other</zorder>
+   <zorder>load_btn</zorder>
+   <zorder>load_desc_btn</zorder>
+   <zorder>menu_btn</zorder>
+   <zorder>calcul_metric_btn</zorder>
+   <zorder>combo_box_k</zorder>
+   <zorder>scrollArea</zorder>
+   <zorder>label_10</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
