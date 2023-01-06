@@ -72,10 +72,13 @@ class SearchScreen(QtWidgets.QMainWindow):
                 nb_images_same_class += 1
 
         k_value_to_add = [10, 20, 50, 100, 200]
+        not_already_added = True
         for k in k_value_to_add:
-            if k <= nb_images_same_class:
-                self.combo_box_k.addItem(str(k))
-        self.combo_box_k.addItem(str(nb_images_same_class))
+            if k > nb_images_same_class and not_already_added:
+                self.combo_box_k.addItem(str(nb_images_same_class))
+                not_already_added = False
+                
+            self.combo_box_k.addItem(str(k))
 
     def load_features(self):
         """ Load the features of the descriptors """
