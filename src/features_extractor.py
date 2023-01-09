@@ -76,33 +76,33 @@ def extract_req_features(filename, algo_choice):
         resized_img = resize(img, (128 * 4, 64 * 4))
             
         # -- Colors --
-        if algo_choice == 1: 
+        if algo_choice == 'BGR': 
             vect_features = compute_colors(img)
         
         # -- HSV --
-        elif algo_choice == 2:
+        elif algo_choice == 'HSV':
             vect_features = compute_hsv(img)
 
         # -- SIFT --
-        elif algo_choice == 3:
+        elif algo_choice == 'SIFT':
             sift = cv2.SIFT_create() 
             key_points, vect_features = sift.detectAndCompute(img, None)
     
         # -- ORB --
-        elif algo_choice == 4:
+        elif algo_choice == 'ORB':
             orb = cv2.ORB_create()
             key_points, vect_features = orb.detectAndCompute(img, None)
 
         # -- GLCM --
-        elif algo_choice == 5: 
+        elif algo_choice == 'GLCM': 
             vect_features = compute_glcm(filename)
 
         # -- LBP --
-        elif algo_choice == 6:
+        elif algo_choice == 'LBP':
             vect_features = compute_lbp(filename)
 
         # -- HOG --
-        elif algo_choice == 7:
+        elif algo_choice == 'HOG':
             vect_features = compute_hog(filename)
 
         else:

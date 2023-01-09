@@ -43,6 +43,11 @@ class SearchScreen(QtWidgets.QMainWindow):
         self.calcul_rp_curve_btn.clicked.connect(self.plot_recall_precision)
         self.calcul_metric_btn.clicked.connect(self.show_metrics)
 
+        # Set the combo box for the descriptor
+        self.combo_box_descriptor.clear()
+        list_of_descriptor_names = os.listdir("../output")
+        self.combo_box_descriptor.addItems(list_of_descriptor_names)
+
     def go_to_menu_screen(self):
         """ Change the current screen to the menu screen """
         self.widgets_stack.setCurrentIndex(self.widgets_stack.currentIndex() - 1)
@@ -82,42 +87,16 @@ class SearchScreen(QtWidgets.QMainWindow):
 
     def load_features(self):
         """ Load the features of the descriptors """
-        choices = {
-            1: (self.checkbox_hist_color, './BGR'),
-            2: (self.checkbox_hsv, './HSV'),
-            3: (self.checkbox_sift, './SIFT'),
-            4: (self.checkbox_orb, './ORB'),
-            5: (self.checkbox_glcm, './GLCM'),
-            6: (self.checkbox_lbp, './LBP'),
-            7: (self.checkbox_hog, './HOG'),
-            8: (self.checkbox_moments, './MOMENTS'),
-            9: (self.checkbox_other, './OTHER')
-        }
-
-        # Check if at least one checkbox is checked
-        one_is_checked = False
-        for _, (checkbox, _) in choices.items():
-            if checkbox.isChecked():
-                one_is_checked = True
-                break
-            
-        if not one_is_checked:
-            self.show_no_selected_dialog()
-            return
-
-        # Select the right folder and algorithm based on the checked checkboxes
-        folder_model = ""
-        for idx, (checkbox, folder) in choices.items():
-            if checkbox.isChecked():
-                folder_model = folder
-                self.algo_choice = idx
+        # Select the right folder
+        folder_model = self.combo_box_descriptor.currentText()
+        self.algo_choice = folder_model
 
         # Reset the area where the images will be displayed
         self.scrollarea_content = QtWidgets.QWidget()
         self.scroll_area.setWidget(self.scrollarea_content)
 
         # Change the combo_box_distance items based on the selected algorithm
-        if self.algo_choice == 3 or self.algo_choice == 4:
+        if self.algo_choice == 'SIFT' or self.algo_choice == 'ORB':
             self.combo_box_distance.clear()
             self.combo_box_distance.addItems(["Brute force", "Flann"])
         else :
@@ -139,15 +118,7 @@ class SearchScreen(QtWidgets.QMainWindow):
 
             self.progress_bar.setValue(int(100 * ((i + 1) / len(all_files))))
         self.progress_bar.setValue(0)
-
-    def show_no_selected_dialog(self):
-        """ Show a dialog box when no descriptor is selected """
-        message_box = QMessageBox()
-        message_box.setIcon(QMessageBox.Information)
-        message_box.setText("Vous devez sélectionner un descripteur via le menu ci-dessus")
-        message_box.setWindowTitle("Pas de Descripteur sélectionné")
-        message_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        return message_box.exec()
+        print(len(self.features))
 
     def search(self):
         """ Search the nearest images related to the query image """
@@ -162,7 +133,20 @@ class SearchScreen(QtWidgets.QMainWindow):
         self.scroll_area.setWidget(self.scrollarea_content)
 
         # Generate features of the query image
-        req = features_extractor.extract_req_features(self.filename, self.algo_choice)
+        if self.algo_choice != 'VGG16':
+            req = features_extractor.extract_req_features(self.filename, self.algo_choice)
+        else:
+            # Find in self.features the one relative to the query image
+            req = None          
+            for _, feature in enumerate(self.features):
+                supposed_filename = os.path.basename(feature[0])
+                true_filename = os.path.basename(self.filename)
+                print(supposed_filename, true_filename)
+                if supposed_filename == true_filename:
+                    req = feature
+                    break
+
+        print(req)
 
         # Get the nearest images based on a chosen distance
         self.number_neighboor = int(self.combo_box_k.currentText())

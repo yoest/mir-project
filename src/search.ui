@@ -41,174 +41,6 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkbox_hist_color">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>60</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>BGR</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkbox_hsv">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>60</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>HSV</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkbox_sift">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>90</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>SIFT</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkbox_orb">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>90</y>
-      <width>91</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>ORB</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkbox_glcm">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>120</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>GLCM</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkbox_lbp">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>120</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>LBP</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkbox_hog">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>60</y>
-      <width>71</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>HOG</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkbox_moments">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>90</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Mom.</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
@@ -496,27 +328,6 @@
      <string>Calculer la courbe R/P</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkbox_other">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>120</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Autre</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="load_btn">
     <property name="geometry">
      <rect>
@@ -661,15 +472,18 @@
      </property>
     </widget>
    </widget>
+   <widget class="QComboBox" name="combo_box_descriptor">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>80</y>
+      <width>251</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>scroll_area</zorder>
    <zorder>label</zorder>
-   <zorder>checkbox_hist_color</zorder>
-   <zorder>checkbox_hsv</zorder>
-   <zorder>checkbox_sift</zorder>
-   <zorder>checkbox_orb</zorder>
-   <zorder>checkbox_glcm</zorder>
-   <zorder>checkbox_lbp</zorder>
-   <zorder>checkbox_hog</zorder>
-   <zorder>checkbox_moments</zorder>
    <zorder>label_2</zorder>
    <zorder>label_requete</zorder>
    <zorder>progress_bar</zorder>
@@ -682,14 +496,13 @@
    <zorder>label_9</zorder>
    <zorder>search_btn</zorder>
    <zorder>calcul_rp_curve_btn</zorder>
-   <zorder>checkbox_other</zorder>
    <zorder>load_btn</zorder>
    <zorder>load_desc_btn</zorder>
    <zorder>menu_btn</zorder>
    <zorder>calcul_metric_btn</zorder>
    <zorder>combo_box_k</zorder>
-   <zorder>scrollArea</zorder>
    <zorder>label_10</zorder>
+   <zorder>combo_box_descriptor</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
