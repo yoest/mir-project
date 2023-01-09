@@ -27,23 +27,7 @@ class IndexingScreen(QtWidgets.QMainWindow):
         self.widgets_stack.setCurrentIndex(self.widgets_stack.currentIndex() - 2)
 
     def open(self):
-        """
-        Removed the outer for loop, as it was only used to iterate over the filenames and add them to self.list_images. 
-        This can be done in a single line using a list comprehension.
-        
-        Moved the code for setting the pixmap and the table view model outside of the loop, as they only need to be done once.
-        
-        Renamed the loop variable i to image_path for clarity.
-        
-        Removed the unnecessary variables filenames and second, 
-            as they were only being used to store copies of first and image_path, respectively.
-        
-        Added a horizontal header to the table view model, which specifies the name of the column.
-        
-        Changed the table view model's column count to 1, since there is only one column of data.
-        
-        Made the table view model's items not editable, since they are just displaying the file names.
-        """
+    
         self.images = []
         self.images_folder = QtWidgets.QFileDialog.getExistingDirectory(None,
             'Select directory', "../db", QtWidgets.QFileDialog.ShowDirsOnly)+"/"
@@ -71,12 +55,6 @@ class IndexingScreen(QtWidgets.QMainWindow):
         self.tableView.setModel(model)
     
     def display_selected_image(self):
-        """
-        I renamed the function to display_selected_image, which better reflects what the function does.
-         I also changed the name of the parameter MainWindow to self, 
-            as it is more standard in Python to use self as the first parameter of an instance method. 
-         I also renamed the variable UrlImg to image_url, as the name more accurately reflects the contents of the variable.
-        """
         index = self.tableView.selectionModel().currentIndex()
         image_url = index.sibling(index.row(), index.column()).data()
         pixmap = QtGui.QPixmap(image_url)
