@@ -141,12 +141,9 @@ class SearchScreen(QtWidgets.QMainWindow):
             for _, feature in enumerate(self.features):
                 supposed_filename = os.path.basename(feature[0])
                 true_filename = os.path.basename(self.filename)
-                print(supposed_filename, true_filename)
                 if supposed_filename == true_filename:
-                    req = feature
+                    req = feature[1]
                     break
-
-        print(req)
 
         # Get the nearest images based on a chosen distance
         self.number_neighboor = int(self.combo_box_k.currentText())
