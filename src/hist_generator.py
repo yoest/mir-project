@@ -52,26 +52,42 @@ def generate_hsv_hist(filenames, progress_bar):
     progress_bar.setValue(0)
     print("Indexing hist hsv done")
 
+
+
+def reduce_resolution(img, new_width, new_height):
+
+    # Réduire la résolution de l'image
+    red_img = cv2.resize(img, (new_width, new_height))
+    return red_img
+
         
 def generate_sift(filenames, progress_bar):
-    """ Generate sift for each image in the folder """
+    """Generate sift for each image in the folder"""
     if not os.path.isdir("../output/SIFT"):
         os.mkdir("../output/SIFT")
 
     for i, path in enumerate(os.listdir(filenames)):
-        img = cv2.imread(filenames + "/" + path)
+        old_img = cv2.imread(filenames + "/" + path)
+        img = reduce_resolution(old_img, 400, 300)
         featureSum = 0
-        sift = cv2.SIFT_create()  
+        sift = cv2.xfeatures2d.SIFT_create()
+        #print(img.shape)
         kps , des = sift.detectAndCompute(img,None)
 
         num_image, _ = path.split(".")
-        np.savetxt("../output/SIFT/" + str(num_image) + ".txt" ,des)
-        progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
+        #print(len(kps), "len(kps)") 
+        #print(len(des), "len(des)") 
+        if(len(kps)) > 0:
+            np.savetxt("../output/SIFT/" + str(num_image) + ".txt" ,des)
+            progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
         
-        featureSum += len(kps)
+            featureSum += len(kps)
+        else:
+            print(filenames + "/" + path)
     
     progress_bar.setValue(0)
     print("Indexing sift done")
+
   
 
 def generate_orb(filenames, progress_bar):
@@ -82,11 +98,14 @@ def generate_orb(filenames, progress_bar):
     for i, path in enumerate(os.listdir(filenames)):
         img = cv2.imread(filenames + "/" + path)
         orb = cv2.ORB_create()
-        _, descriptor1 = orb.detectAndCompute(img, None)
+        key_point1, descriptor1 = orb.detectAndCompute(img, None)
         
         num_image, _ = path.split(".")
-        np.savetxt("../output/ORB/" + str(num_image) + ".txt", descriptor1)
-        progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
+        if(descriptor1 is not None):
+            np.savetxt("../output/ORB/" + str(num_image) + ".txt", descriptor1)
+            progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
+        else:
+            print(filenames + "/" + path)
 
     progress_bar.setValue(0)
     print("Indexing orb done")
