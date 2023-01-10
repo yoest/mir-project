@@ -62,7 +62,7 @@ def compute_brute_force_matching(v1, v2):
 
 
 def compute_distance_with_name(v1, v2, distance_name):
-    """ Compute the distance between two vectors based on a given distance name."""
+    """ Compute the distance between two vectors based on a given distance name. If the distance name is not found, an exception is raised. """
     if distance_name == "Euclidienne":
         distance = compute_euclidean_dist(v1, v2)
     elif distance_name == "Correlation":
@@ -79,11 +79,24 @@ def compute_distance_with_name(v1, v2, distance_name):
         distance = compute_brute_force_matching(v1, v2)
     elif distance_name == "Flann":
         distance = compute_flann_dist(v1, v2)
+    else:
+        raise Exception("Distance name not found.")
+
     return distance
 
 
 def get_k_voisins(lfeatures, req, k, distance_name):
-    """ Return the k nearest neighbors of a given request. """ 
+    """ Get the k nearest neighbors of a given request.
+
+    Args:
+        lfeatures (list): list of features for each image in the database.
+        req: feature extracted from the request image.
+        k (int): number of neighbors to return.
+        distance_name (str): name of the distance to use.
+
+    Returns:
+        list: list of k nearest neighbors.
+    """
     ldistances = [] 
     for i in range(len(lfeatures)): 
         dist = compute_distance_with_name(req, lfeatures[i][1], distance_name)

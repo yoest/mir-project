@@ -8,6 +8,7 @@ from indexing_screen import IndexingScreen
 
 
 if __name__ == '__main__':
+    """ Start the application in a fixed size window """
     app = QtWidgets.QApplication(sys.argv)
     widgets_stack = QtWidgets.QStackedWidget()
 

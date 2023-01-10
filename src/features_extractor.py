@@ -70,7 +70,18 @@ def compute_hog(filename):
 
 
 def extract_req_features(filename, algo_choice):  
-    """ Extract features from an image in a file an chose a specific algorithm """
+    """ Extract features from an image in a file an chose a specific algorithm
+
+    Args:
+        filename (str): filename of the image
+        algo_choice (str): name of the algorithm to use
+
+    Raises:
+        ValueError: if the algorithm name does not exists
+
+    Returns:
+        vect_features (np.array): features vector
+    """
     if filename: 
         img = cv2.imread(filename)
         resized_img = resize(img, (128 * 4, 64 * 4))

@@ -1,30 +1,25 @@
+import math
+import os
 import time
-from PyQt5 import QtWidgets
-from PyQt5.uic import loadUi
 
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import (QApplication, QFileDialog, QMessageBox,
+                             QPushButton, QWidget)
+from PyQt5.uic import loadUi
 
-import cv2
-import numpy as np
-import os
-import math
-import matplotlib.pyplot as plt
-
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
-
-import features_extractor
 import distances
-
+import features_extractor
 
 
 class SearchScreen(QtWidgets.QMainWindow):
 
     def __init__(self, widgets_stack):
-        """ This class is used to display the screen where the user can select a query image and search for similar images in the database
-        """
+        """ This class is used to display the screen where the user can select a query image and search for similar images in the database """
         super(SearchScreen, self).__init__()
         self.widgets_stack = widgets_stack
 
@@ -118,7 +113,6 @@ class SearchScreen(QtWidgets.QMainWindow):
 
             self.progress_bar.setValue(int(100 * ((i + 1) / len(all_files))))
         self.progress_bar.setValue(0)
-        print(len(self.features))
 
     def search(self):
         """ Search the nearest images related to the query image """
