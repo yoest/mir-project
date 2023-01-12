@@ -185,10 +185,17 @@ def generate_hog(filenames, progress_bar):
     if not os.path.isdir("../output/HOG"):
         os.mkdir("../output/HOG")
 
+    cell_size = (25, 25)
+    block_size = (50, 50)
+    block_stride = (25, 25)
+    n_bins = 9
+    win_size = (350, 350)
     for i, path in enumerate(os.listdir(filenames)):
         img = cv2.imread(filenames + "/" + path)
-        
-        feature = compute_hog(img)
+        image = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+        image = cv2.resize(image, win_size)
+        hog = cv2.HOGDescriptor(win_size, block_size, block_stride, cell_size, n_bins)
+        feature = hog.compute(image)
         num_image, _ = path.split(".")
         np.savetxt("../output/HOG/" + str(num_image) + ".txt", feature)
         progress_bar.setValue(100 * ((i + 1) / len(os.listdir(filenames))))
