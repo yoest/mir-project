@@ -38,7 +38,8 @@ class SearchScreen(QtWidgets.QMainWindow):
         self.calcul_rp_curve_btn.clicked.connect(self.plot_recall_precision)
         self.calcul_metric_btn.clicked.connect(self.show_metrics)
 
-        # Set the combo box for the descriptor
+    def initialize_desc(self):
+        """ Initialize the descriptor to use for the search """
         self.combo_box_descriptor.clear()
         list_of_descriptor_names = os.listdir("../output")
         self.combo_box_descriptor.addItems(list_of_descriptor_names)

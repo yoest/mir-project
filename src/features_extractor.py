@@ -2,70 +2,49 @@ from skimage.transform import resize
 import cv2
 import numpy as np
 from skimage.feature import hog, greycomatrix, graycoprops, local_binary_pattern, greycoprops
+import utils
 
 
+def compute_combined_descriptor(img, algo_choice):
+    """ Compute the descriptor of an image which is the combination of multiple descriptor
 
-def compute_colors(img):
-    """ Compute color vectors features for an image """
-    hist_b = cv2.calcHist([img], [0], None, [256], [0,256])
-    hist_g = cv2.calcHist([img], [1], None, [256], [0,256])
-    hist_r = cv2.calcHist([img], [2], None, [256], [0,256])
-    return np.concatenate((hist_b, np.concatenate((hist_g, hist_r), axis=None)), axis=None)
+    Args:
+        img (np.array): image to compute the descriptor
+        algo_choice (str): name of the algorithm to use
 
+    Returns:
+        np.array: descriptor of the image
+    """
+    dec_sift, dec_orb = None, None
 
-def compute_hsv(img):
-    """ Compute hsv vectors features for an image """
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    hist_h = cv2.calcHist([hsv], [0], None, [256], [0,256])
-    hist_s = cv2.calcHist([hsv], [1], None, [256], [0,256])
-    hist_v = cv2.calcHist([hsv], [2], None, [256], [0,256])
-    return np.concatenate((hist_h, np.concatenate((hist_s, hist_v), axis=None)), axis=None)
-
-
-def compute_glcm(filename):
-    """ Compute GLCM features for an image """
-    img = cv2.imread(filename, 3)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    image_glcm = greycomatrix(img, distances=[1], angles=[0, np.pi / 4, -np.pi / 2], symmetric=True, normed=True)
-    return greycoprops(image_glcm, 'contrast')
-
-
-def compute_lbp(filename):
-    """ Compute LBP features for an image """
-    def cal_hist_gray(image):
-        image = image.astype(np.uint8)
-        hist = cv2.calcHist(image, [0], None, [256], [0, 256])
-        hist = cv2.normalize(hist, hist)
-        return hist
-
-    def lbp_descriptor(image):             
-        METHOD = 'uniform'
-        radius = 3
-        n_points = 8 * radius
-        gray = cal_hist_gray(image)
-        lbp = local_binary_pattern(gray, n_points, radius, METHOD)
-        return lbp
-
-    def cal_lbp(image):                   
-        if image is not None:
-            des = lbp_descriptor(image)
-            lbp_features = des.tolist()
-        lbp_features = np.array(lbp_features)
-        return lbp_features
-
-    image = cv2.imread(filename, 3)
-    return cal_lbp(image)
-
-
-def compute_hog(filename):
-    """ Compute HOG features for an image """
-    def hog_desc(image):
-        resized_img = resize(image, (128*4, 64*4))
-        fd, hog_image = hog(resized_img, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualize=True, multichannel=True)
-        return hog_image
-
-    image = cv2.imread(filename, 3)
-    return hog_desc(image)
+    feature_methods = algo_choice.split("_")
+    features = []
+    
+    if "BGR" in feature_methods:
+        color_hist = utils.compute_colors(img)
+        features.append(color_hist)
+    if "HSV" in feature_methods:
+        hsv_hist = utils.compute_hsv(img)
+        features.append(hsv_hist)
+    if "GLCM" in feature_methods:
+        glcm = utils.compute_glcm(img)
+        features.append(glcm)
+    if "LBP" in feature_methods:
+        lbp = utils.compute_lbp(img)
+        features.append(lbp)
+    if "HOG" in feature_methods:
+        hog = utils.compute_hog(img)
+        features.append(hog)
+    if "SIFT" in feature_methods:
+        kps_sift, dec_sift = utils.compute_sift(img)
+        if dec_sift is not None:
+            features.append(dec_sift)
+    if "ORB" in feature_methods:
+        kps_orb, dec_orb = utils.compute_orb(img)
+        if dec_orb is not None:
+            features.append(dec_orb)
+    
+    return np.concatenate(features, axis=None)
 
 
 
@@ -84,37 +63,39 @@ def extract_req_features(filename, algo_choice):
     """
     if filename: 
         img = cv2.imread(filename)
-        resized_img = resize(img, (128 * 4, 64 * 4))
+        # resized_img = resize(img, (128 * 4, 64 * 4))
             
         # -- Colors --
         if algo_choice == 'BGR': 
-            vect_features = compute_colors(img)
+            vect_features = utils.compute_colors(img)
         
         # -- HSV --
         elif algo_choice == 'HSV':
-            vect_features = compute_hsv(img)
+            vect_features = utils.compute_hsv(img)
 
         # -- SIFT --
         elif algo_choice == 'SIFT':
-            sift = cv2.SIFT_create() 
-            key_points, vect_features = sift.detectAndCompute(img, None)
+            key_points, vect_features = utils.compute_sift(img)
     
         # -- ORB --
         elif algo_choice == 'ORB':
-            orb = cv2.ORB_create()
-            key_points, vect_features = orb.detectAndCompute(img, None)
+            key_points, vect_features = utils.compute_orb(img)
 
         # -- GLCM --
         elif algo_choice == 'GLCM': 
-            vect_features = compute_glcm(filename)
+            vect_features = utils.compute_glcm(img)
 
         # -- LBP --
         elif algo_choice == 'LBP':
-            vect_features = compute_lbp(filename)
+            vect_features = utils.compute_lbp(img)
 
         # -- HOG --
         elif algo_choice == 'HOG':
-            vect_features = compute_hog(filename)
+            vect_features = utils.compute_hog(img)
+
+        # -- Combined descriptor --
+        elif '_' in algo_choice:
+            vect_features = compute_combined_descriptor(img, algo_choice)
 
         else:
             raise ValueError("Invalid algorithm choice: " + str(algo_choice))

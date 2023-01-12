@@ -19,6 +19,7 @@ class MenuScreen(QtWidgets.QMainWindow):
     def go_to_search_screen(self):
         """ Navigate through the widgets stack to the search screen """
         self.widgets_stack.setCurrentIndex(self.widgets_stack.currentIndex() + 1)
+        self.widgets_stack.currentWidget().initialize_desc()
 
     def go_to_indexing_screen(self):
         """ Navigate through the widgets stack to the indexing screen """

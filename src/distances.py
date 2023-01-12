@@ -56,8 +56,13 @@ def compute_brute_force_matching(v1, v2):
     if v1.shape[0] == 0 or v2.shape[0] == 0:
         return np.inf
 
-    bf = cv2.BFMatcher(cv2.NORM_HAMMING)
-    matches = list(map(lambda x: x.distance, bf.match(v1, v2)))
+    # This exeception is handled for some case of sift
+    try:
+        bf = cv2.BFMatcher(cv2.NORM_HAMMING)
+        matches = list(map(lambda x: x.distance, bf.match(v1, v2)))
+    except:
+        return np.inf
+
     return np.mean(matches)
 
 

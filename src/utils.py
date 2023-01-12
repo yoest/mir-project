@@ -19,7 +19,7 @@ def compute_feature_methods_name(feature_methods):
     res = ""
     for method in feature_methods:
         res = res + "_" + method 
-    return res 
+    return res[1:]
 
 def compute_file_size(filename):
     """ Compute the size of a file given by its name. """
@@ -96,7 +96,7 @@ def reduce_resolution(img, new_width, new_height):
 def compute_sift(old_img):
         #old_img = cv2.imread(filename)
         img = reduce_resolution(old_img, 200, 150)
-        sift = cv2.xfeatures2d.SIFT_create()
+        sift = cv2.SIFT_create()
         kps, des = sift.detectAndCompute(img,None)
         
         return kps, des
