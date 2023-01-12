@@ -44,14 +44,11 @@ def compute_flann_dist(v1, v2):
     if v1.shape[0] == 0 or v2.shape[0] == 0:
         return np.inf
 
-    try:
-        index_params = dict(algorithm=1, trees=5)
-        sch_params = dict(checks=50)
-        flannMatcher = cv2.FlannBasedMatcher(index_params, sch_params)
-        matches = list(map(lambda x: x.distance, flannMatcher.match(v1, v2)))
-        return np.mean(matches)
-    except:
-        return np.inf
+    index_params = dict(algorithm=1, trees=5)
+    sch_params = dict(checks=50)
+    flannMatcher = cv2.FlannBasedMatcher(index_params, sch_params)
+    matches = list(map(lambda x: x.distance, flannMatcher.match(v1, v2)))
+    return np.mean(matches)
 
 
 def compute_brute_force_matching(v1, v2):
