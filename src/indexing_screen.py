@@ -85,30 +85,41 @@ class IndexingScreen(QtWidgets.QMainWindow):
         # check if any feature extraction method has been selected
         if not feature_methods:
             return
-        combining = False
+        if len(feature_methods) > 1:
+            combining = True
+        else:
+            combining = False
         # extract features using the selected method(s)
         if not combining:
             for feature_method in feature_methods:
                 if feature_method == "BGR":
+                    #compute_execution_time(generate_color_hist, (self.images_folder, self.progressBar))
+                    #compute_file_size("../output/BGR")
                     generate_color_hist(self.images_folder, self.progressBar)
                 if feature_method == "HSV":
+                    #compute_file_size("../output/HSV")
+                    #compute_execution_time(generate_hsv_hist, (self.images_folder, self.progressBar))
                     generate_hsv_hist(self.images_folder, self.progressBar)
                 if feature_method == "SIFT":
+                    #compute_file_size("../output/SIFT")
+                    #compute_execution_time(generate_sift,(self.images_folder, self.progressBar))
                     generate_sift(self.images_folder, self.progressBar)
                 if feature_method == "ORB":
+                    #compute_file_size("../output/ORB")
+                    #compute_execution_time(generate_orb,(self.images_folder, self.progressBar))
                     generate_orb(self.images_folder, self.progressBar)
                 if feature_method == "HOG":
+                    #compute_file_size("../output/ORB")
+                    #compute_execution_time(generate_hog,(self.images_folder, self.progressBar))
                     generate_hog(self.images_folder, self.progressBar)
                 if feature_method == "LBP":
+                    #compute_file_size("../output/LBP")
+                    #compute_execution_time(generate_lbp, (self.images_folder, self.progressBar))
                     generate_lbp(self.images_folder, self.progressBar)
                 if feature_method == "GLCM":
+                    #compute_execution_time(generate_glcm,(self.images_folder, self.progressBar))
+                    #compute_file_size("../output/GLCM")
                     generate_glcm(self.images_folder, self.progressBar)
         else:
-            pass
-            #global_generator(self.images_folder, self.progressBar, feature_methods)
-        # calculate and display the size of the generated feature file
-        file_name = f"../output/{feature_method}"
-        file_stats = os.stat(file_name)
-        print(f'File Size in Bytes is {file_stats.st_size}')
-        print(f'File Size in KiloBytes is {file_stats.st_size / (1024)}')
-        print(f'File Size in MegaBytes is {file_stats.st_size / (1024 * 1024)}')
+            global_generator(self.images_folder, self.progressBar, feature_methods)
+       
