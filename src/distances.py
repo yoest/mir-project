@@ -8,9 +8,12 @@ import operator
 
 def compute_euclidean_dist(v1, v2):
     """ Compute the euclidean distance between two vectors. """
-    a = np.array(v1)
-    b = np.array(v2)
-    return np.linalg.norm(a - b)
+    try:
+        a = np.array(v1)
+        b = np.array(v2)
+        return np.linalg.norm(a - b)
+    except:
+        return np.inf
 
 
 def compute_chi_square_distance(v1, v2):
@@ -41,11 +44,14 @@ def compute_flann_dist(v1, v2):
     if v1.shape[0] == 0 or v2.shape[0] == 0:
         return np.inf
 
-    index_params = dict(algorithm=1, trees=5)
-    sch_params = dict(checks=50)
-    flannMatcher = cv2.FlannBasedMatcher(index_params, sch_params)
-    matches = list(map(lambda x: x.distance, flannMatcher.match(v1, v2)))
-    return np.mean(matches)
+    try:
+        index_params = dict(algorithm=1, trees=5)
+        sch_params = dict(checks=50)
+        flannMatcher = cv2.FlannBasedMatcher(index_params, sch_params)
+        matches = list(map(lambda x: x.distance, flannMatcher.match(v1, v2)))
+        return np.mean(matches)
+    except:
+        return np.inf
 
 
 def compute_brute_force_matching(v1, v2):
@@ -56,7 +62,6 @@ def compute_brute_force_matching(v1, v2):
     if v1.shape[0] == 0 or v2.shape[0] == 0:
         return np.inf
 
-    # This exeception is handled for some case of sift
     try:
         bf = cv2.BFMatcher(cv2.NORM_HAMMING)
         matches = list(map(lambda x: x.distance, bf.match(v1, v2)))
