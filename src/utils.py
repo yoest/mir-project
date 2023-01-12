@@ -79,27 +79,31 @@ def compute_lbp(image):
 
 def compute_hog(image):
     """ Compute HOG features for an image """
-    def hog_desc(image):
-        resized_img = resize(image, (128*4, 64*4))
-        fd, hog_image = hog(resized_img, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualize=True, multichannel=True)
-        return hog_image
+    cell_size = (25, 25)
+    block_size = (50, 50)
+    block_stride = (25, 25)
+    n_bins = 9
+    win_size = (350, 350)
 
-    #image = cv2.imread(filename, 3)
-    return hog_desc(image)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image = cv2.resize(image, win_size)
+    hog = cv2.HOGDescriptor(win_size, block_size, block_stride, cell_size, n_bins)
+    feature = hog.compute(image)
+
+    return feature
 
 def reduce_resolution(img, new_width, new_height):
-
     # Réduire la résolution de l'image
     red_img = cv2.resize(img, (new_width, new_height))
     return red_img
 
 def compute_sift(old_img):
-        #old_img = cv2.imread(filename)
-        img = reduce_resolution(old_img, 200, 150)
-        sift = cv2.SIFT_create()
-        kps, des = sift.detectAndCompute(img,None)
-        
-        return kps, des
+    #old_img = cv2.imread(filename)
+    img = reduce_resolution(old_img, 200, 150)
+    sift = cv2.SIFT_create()
+    kps, des = sift.detectAndCompute(img,None)
+    
+    return kps, des
             
 def compute_orb(img):
     orb = cv2.ORB_create()
