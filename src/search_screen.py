@@ -27,6 +27,7 @@ class SearchScreen(QtWidgets.QMainWindow):
         self.average_precision_values = []
         self.metrics_computed_for_query = False
         self.already_search_for_query = False
+        self.desc_loaded = False
 
         # Load the UI file and link the buttons to their functions
         loadUi("search.ui", self)
@@ -115,8 +116,16 @@ class SearchScreen(QtWidgets.QMainWindow):
             self.progress_bar.setValue(int(100 * ((i + 1) / len(all_files))))
         self.progress_bar.setValue(0)
 
+        self.desc_loaded = True
+        
+
     def search(self):
         """ Search the nearest images related to the query image """
+        # Do not apply the search if the features are not loaded
+        if not self.desc_loaded:
+            self.show_no_desc_loaded()
+            return
+
         start_time = time.time()
 
         # Reset to avoid computing the metrics for the previous query
@@ -309,5 +318,14 @@ class SearchScreen(QtWidgets.QMainWindow):
         message_box.setIcon(QMessageBox.Information)
         message_box.setText("Vous devez d'abord appuyer sur le bouton 'Rechercher' avant d'effectuer cette action")
         message_box.setWindowTitle("Pas encore de recherche effectuée")
+        message_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        return message_box.exec()
+
+    def show_no_desc_loaded(self):
+        """ Show a dialog box when the descriptors have not been loaded yet """
+        message_box = QMessageBox()
+        message_box.setIcon(QMessageBox.Information)
+        message_box.setText("Vous devez d'abord appuyer sur le bouton 'Charger descripteurs' avant d'effectuer cette action")
+        message_box.setWindowTitle("Pas encore de descripteurs chargés")
         message_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         return message_box.exec()
